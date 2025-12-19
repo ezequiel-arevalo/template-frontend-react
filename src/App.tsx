@@ -90,7 +90,15 @@ export const App = () => {
 
 			<footer className="py-4 text-center text-sm text-slate-500">
 				<p>
-					© {year} <a href="https://github.com/ezequiel-arevalo/template-frontend-react" target="_blank" rel="noopener noreferrer" className="text-slate-300 underline-offset-4 underline">Ezequiel Arevalo</a>
+					© {year}{" "}
+					<a
+						href="https://github.com/ezequiel-arevalo/template-frontend-react"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-slate-300 underline-offset-4 underline"
+					>
+						Ezequiel Arevalo
+					</a>
 				</p>
 			</footer>
 		</div>
