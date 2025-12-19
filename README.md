@@ -1,54 +1,75 @@
 # Template Frontend React
 
-Template base para proyectos frontend modernos con React, enfocado en **velocidad**, **calidad de código** y **baja fricción** desde el día uno.
+Template base para proyectos frontend modernos con **React**, enfocado en **velocidad**, **calidad de código** desde el día uno.
 
----
 
 ## 🚀 Stack incluido
 
-* **React** – Librería principal
-* **Vite** – Dev server y bundler rápido
-* **TypeScript** – Tipado estático
-* **SWC** – Compilación ultra rápida
-* **Bun** – Runtime y gestor de paquetes
-* **Tailwind CSS** – Estilos utilitarios
+| Tecnología | Icono | Descripción | Enlace |
+|------------|-------|------------|-------|
+| React | ⚛️ | UI declarativa y componible | [react.dev](https://react.dev) |
+| Tailwind CSS | 🎨 | Utility-first CSS para velocidad | [tailwindcss.com](https://tailwindcss.com) |
+| Vite | ⚡ | Bundler rápido para DX moderna | [vitejs.dev](https://vitejs.dev) |
+| Bun | 🧋 | Runtime y gestor de paquetes ultrarrápido | [bun.sh](https://bun.sh) |
+| TypeScript | 📝 | Tipado estático | [typescriptlang.org](https://www.typescriptlang.org) |
+| SWC | 🚀 | Compilación ultra rápida | [swc.rs](https://swc.rs) |
 
----
 
-## 🧹 Calidad de código
+## 🧹 Calidad de código & control de commits
 
-* **Biome**
+| Herramienta | Icono | Funcionalidad | Enlace |
+|------------|-------|---------------|-------|
+| Biome | 🧹 | Linting, formatting, organización de imports, reglas recomendadas activas | [biomejs.dev](https://biomejs.dev) |
+| CommitLint | 📝 | Convención de commits (Conventional Commits) | [commitlint.js.org](https://commitlint.js.org) |
+| Lefthook | 🪝 | Automatización de hooks de Git: pre-commit, commit-msg y pre-push | [lefthook.dev](https://lefthook.dev) |
 
-  * Linting
-  * Formatting
-  * Organización de imports
-  * Reglas recomendadas activas
+### ⚙️ Pre-push script
 
-* **CommitLint**
+Antes de cualquier push, se ejecuta un script que asegura que todo está en orden:
 
-  * Convención de commits (Conventional Commits)
+```bash
+#!/usr/bin/env bash
+set -e
 
-* **Lefthook**
+echo "🔍 Verificación inicial de rama"
+bash .lefthook/validate-branch.sh
 
-  * Hooks de Git rápidos y declarativos
-  * `pre-commit`: lint + tests
-  * `commit-msg`: validación de mensajes
+echo "🧠 Chequeando tipos de TypeScript"
+bun run type-check
 
----
+echo "🧹 Ejecutando Biome (lint + format + imports)"
+bun run check:fix
+
+echo "🏗️ Ejecutando build del proyecto"
+bun run build
+
+echo "🧪 Ejecutando tests (Vitest)"
+bun run test:run
+
+echo "✅ Pre-push completado con éxito. Todo en orden."
+```
+
+Esto asegura:
+
+* Control de ramas
+* Validación de commits
+* Chequeo de tipos
+* Linting y formatting
+* Build exitoso
+* Tests pasados
 
 ## 🧪 Testing
 
-* **Vitest**
+| Herramienta | Icono | Funcionalidad | Enlace |
+|------------|-------|---------------|-------|
+| Vitest | 🧪 | Tests unitarios y de componentes, integración nativa con Vite | [vitest.dev](https://vitest.dev) |
+| Testing Library | 🧪 | Tests centrados en el comportamiento del usuario | [testing-library.com](https://testing-library.com) |
 
-  * Tests unitarios
-  * Tests de componentes
-  * Integración nativa con Vite
+## 🗺️ Navegación / Ruteo
 
-* **Testing Library**
-
-  * Tests centrados en el comportamiento del usuario
-
----
+| Librería | Icono | Funcionalidad | Enlace |
+|----------|-------|---------------|-------|
+| React Router Dom | 🧭 | Ruteo declarativo para SPAs | [reactrouter.com](https://reactrouter.com) |
 
 ## 📁 Estructura base
 
@@ -63,8 +84,6 @@ src/
 └─ main.tsx
 ```
 
----
-
 ## 🧠 Filosofía del template
 
 * Opiniones claras
@@ -73,13 +92,11 @@ src/
 * Fácil de extender
 * Listo para producción
 
-Este template **no incluye**:
+**No incluye:**
 
 * Storybook (usar solo en repos de UI)
 * Playwright (agregar solo si hay flujos críticos)
-* React Compiler (aún experimental)
-
----
+* React Compiler (experimental)
 
 ## 📜 Scripts principales
 
@@ -91,30 +108,23 @@ bun lint       # Biome check
 bun test       # Vitest
 ```
 
----
-
 ## ✅ Requisitos
 
 * Bun >= latest
 * Node.js solo si alguna herramienta externa lo requiere
 
----
-
 ## 🏁 Uso
 
 1. Usa este repo como template en GitHub
 2. Instala dependencias:
+```bash
+bun install
+```
 
-   ```bash
-   bun install
-   ```
 3. Inicia el proyecto:
-
-   ```bash
-   bun dev
-   ```
-
----
+```bash
+bun dev
+```
 
 ## 📌 Notas
 
@@ -124,9 +134,3 @@ Este template está pensado para:
 * Equipos pequeños o medianos
 * Apps frontend modernas
 * Uso profesional y educativo
-
-Si necesitas E2E, design systems o setups experimentales, considera templates específicos.
-
----
-
-Happy hacking 🚀
