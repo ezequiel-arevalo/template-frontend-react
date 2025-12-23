@@ -10,18 +10,28 @@
 	},
 	"formatter": {
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"lineEnding": "crlf",
+		"bracketSameLine": true,
+		"bracketSpacing": true,
+		"formatWithErrors": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
-			
+			"security": {
+				"noDangerouslySetInnerHtml": "error",
+				"noDangerouslySetInnerHtmlWithChildren": "error"
+			},
+			"recommended": true,
+      "style": {
+        "noNonNullAssertion": "warn"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "single"
 		}
 	},
 	"assist": {

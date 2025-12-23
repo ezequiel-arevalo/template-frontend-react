@@ -7,8 +7,14 @@ bash .lefthook/validate-branch.sh
 echo "🧠 Chequeando tipos de TypeScript"
 bun run type-check
 
-echo "🧹 Ejecutando Biome (lint + format + imports)"
-bun run check:fix
+echo "🧹 Formateando código (Biome format)"
+bun run format:fix
+
+echo "🔎 Ejecutando linter (Biome lint)"
+bun run lint:fix
+
+echo "✅ Verificación final (Biome check)"
+bun run check
 
 echo "🏗️ Ejecutando build del proyecto"
 bun run build
